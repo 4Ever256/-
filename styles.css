@@ -1,0 +1,425 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    color: white;
+    background: #000;
+}
+
+#space-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.navigation {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: flex;
+    gap: 20px;
+    padding: 15px 30px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    user-select: none;
+}
+
+.nav-item {
+    color: white;
+    text-decoration: none;
+    padding: 8px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-item.active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.content-container {
+    position: relative;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    user-select: none;
+}
+
+.page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.page.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.page h1 {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.page p {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.page.active h1 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.page.active p {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+}
+
+h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    background: linear-gradient(45deg, #fff, #88f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: default;
+}
+
+p {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    cursor: default;
+}
+
+.social-icons {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: flex;
+    gap: 20px;
+}
+
+.social-icon {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 18px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    color: rgba(255, 255, 255, 1);
+    transform: translateY(-2px);
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.product-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.product-icon {
+    margin-bottom: 20px;
+}
+
+.product-icon i {
+    font-size: 3rem;
+    background: linear-gradient(45deg, #fff, #88f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 10px rgba(136, 136, 255, 0.3);
+}
+
+.product-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    background: linear-gradient(45deg, #fff, #88f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.product-description {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.product-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    height: 45px;
+    padding: 0;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(136, 136, 255, 0.2));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    color: white;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.product-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.product-button:hover {
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(136, 136, 255, 0.3));
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(136, 136, 255, 0.2);
+}
+
+.product-button:hover::before {
+    left: 100%;
+}
+
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.feature-card i {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #fff, #88f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    background: linear-gradient(45deg, #fff, #88f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.feature-card p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+}
+
+.about-content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.about-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.about-section h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #fff, #88f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.timeline {
+    margin-top: 30px;
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 20px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    background: #88f;
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+.timeline-item .date {
+    width: 100px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.timeline-item .event {
+    flex: 1;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.charity-content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.charity-mission {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.charity-mission h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #fff, #88f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.charity-projects {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.charity-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.charity-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.charity-card i {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #fff, #88f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.charity-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    background: linear-gradient(45deg, #fff, #88f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.charity-card p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .charity-projects {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+    }
+
+    .timeline-item .date {
+        margin-bottom: 5px;
+    }
+} 

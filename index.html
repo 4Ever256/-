@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlphaGoClub</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div id="space-container"></div>
+    
+    <nav class="navigation">
+        <a href="#home" class="nav-item active" data-page="home">主页</a>
+        <a href="#about" class="nav-item" data-page="about">关于</a>
+        <a href="#projects" class="nav-item" data-page="projects">产品</a>
+        <a href="#contact" class="nav-item" data-page="contact">慈善</a>
+    </nav>
+
+    <div class="content-container">
+        <section id="home" class="page active">
+            <h1>Welcome to AlphaGoClub</h1>
+            <p>Web3一站式俱乐部｜信息集散地</p>
+            <div class="content-grid">
+                <div class="feature-card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Web3工具</h3>
+                    <p>专业的Web3工具集，助您轻松驾驭数字世界</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>慈善事业</h3>
+                    <p>用区块链技术推动慈善事业的透明化发展</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>智能监控</h3>
+                    <p>全天候市场监控，实时捕捉投资机会</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users"></i>
+                    <h3>社区互助</h3>
+                    <p>活跃的社区氛围，共同学习与成长</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="about" class="page">
+            <h1>关于我们</h1>
+            <p>About Us</p>
+            <div class="about-content">
+                <div class="about-section">
+                    <h3>我们的愿景</h3>
+                    <p>汇聚Web3，赋能开发者，打破常规，触摸未来</p>
+                </div>
+                <div class="about-section">
+                    <h3>发展历程</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="date">2025.03.10</div>
+                            <div class="event">AlphaGoClub成立，开启创新发展之路</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="date">2025.03.15</div>
+                            <div class="event">首款产品AlphaGoClub_Bot发布，打造Alpha信息共享平台</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="date">2025.03.16</div>
+                            <div class="event">官方社交媒体平台正式运营</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="date">2025.03.17</div>
+                            <div class="event">官网上线，开启多方合作，持续赋能Web3开发者</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="projects" class="page">
+            <h1>产品展示</h1>
+            <p>Our Products</p>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>AlphaGoClub_Bot</h3>
+                        <p class="product-description">智能信息机器人，专注于Alpha信息分享，让用户都能获取优质的投资机会。</p>
+                        <a href="#" class="product-button">了解更多</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>开发中</h3>
+                        <p class="product-description">更多创新产品正在开发中，程序员正加班加点，敬请期待。</p>
+                        <a href="#" class="product-button">敬请期待</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>未来规划</h3>
+                        <p class="product-description">我们将持续创新，为Web3世界带来更多优质工具。</p>
+                        <a href="#" class="product-button">敬请期待</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="page">
+            <h1>慈善事业</h1>
+            <p>Charity Programs</p>
+            <div class="charity-content">
+                <div class="charity-mission">
+                    <h3>我们的使命</h3>
+                    <p>通过Web3技术赋能公益事业，让慈善更加透明和高效</p>
+                </div>
+                <div class="charity-projects">
+                    <div class="charity-card">
+                        <i class="fas fa-book-reader"></i>
+                        <h3>教育援助</h3>
+                        <p>为偏远地区提供Web3教育资源和设备支持</p>
+                    </div>
+                    <div class="charity-card">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <h3>公益创新</h3>
+                        <p>利用区块链技术提高慈善项目的透明度</p>
+                    </div>
+                    <div class="charity-card">
+                        <i class="fas fa-users"></i>
+                        <h3>社区发展</h3>
+                        <p>支持基层Web3创新项目，促进社区发展</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="social-icons">
+        <a href="https://x.com/AlphaGoClub" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+        <a href="https://discord.gg/zN2uHXtNPx" target="_blank" class="social-icon"><i class="fab fa-discord"></i></a>
+        <a href="https://t.me/+nmJXR95WtclhMTdh" target="_blank" class="social-icon"><i class="fab fa-telegram"></i></a>
+        <a href="https://4-ever.gitbook.io/alphagoclub-gong-kai-xin-xi/" target="_blank" class="social-icon"><i class="fas fa-book"></i></a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
