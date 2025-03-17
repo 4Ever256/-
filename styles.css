@@ -81,7 +81,7 @@ body {
     visibility: hidden;
     transition: opacity 0.5s ease;
     pointer-events: none;
-    padding: 120px 20px 40px;
+    padding: 240px 20px 40px;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 }
@@ -117,7 +117,7 @@ body {
 
 h1 {
     font-size: 4rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2.5rem;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     background: linear-gradient(45deg, #fff, #88f);
     -webkit-background-clip: text;
@@ -130,6 +130,7 @@ p {
     color: rgba(255, 255, 255, 0.8);
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
     cursor: default;
+    margin-bottom: 3rem;
 }
 
 .social-icons {
@@ -160,7 +161,7 @@ p {
     gap: 30px;
     width: 100%;
     max-width: 1200px;
-    margin: 20px auto;
+    margin: 40px auto;
     padding: 20px;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -261,23 +262,58 @@ p {
 }
 
 @media (max-width: 768px) {
+    .page {
+        position: absolute;
+        height: 100vh;
+        width: 100%;
+        padding-top: 100px;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(136, 136, 255, 0.5) transparent;
+        touch-action: pan-y;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Webkit browsers (Chrome, Safari) scrollbar styles */
+    .page::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .page::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .page::-webkit-scrollbar-thumb {
+        background: rgba(136, 136, 255, 0.6);
+        border-radius: 4px;
+        border: 2px solid transparent;
+        background-clip: padding-box;
+        min-height: 40px;
+    }
+
+    .page::-webkit-scrollbar-thumb:hover {
+        background: rgba(136, 136, 255, 0.8);
+    }
+
     body {
-        overflow-y: auto;
+        overflow: hidden;
+        position: fixed;
+        height: 100vh;
+        width: 100%;
     }
 
     .content-container {
-        overflow-y: auto;
-    }
-
-    .page {
-        padding-top: 100px;
+        position: fixed;
         height: 100vh;
-        overflow-y: auto;
+        width: 100%;
+        overflow: hidden;
     }
 
     .products-grid {
-        max-height: calc(100vh - 180px);
+        max-height: none;
         padding: 15px;
+        margin-bottom: 60px;
     }
 
     .navigation {
@@ -285,6 +321,7 @@ p {
         top: 20px;
         width: 90%;
         z-index: 1000;
+        background: rgba(0, 0, 0, 0.8);
     }
 
     .nav-item {
@@ -296,6 +333,7 @@ p {
         font-size: 2.5rem;
         text-align: center;
         padding: 0 20px;
+        margin-bottom: 1.5rem;
     }
 
     p {
