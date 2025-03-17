@@ -94,6 +94,11 @@ function init() {
     document.addEventListener('mousedown', onMouseDown, false);
     document.addEventListener('mouseup', onMouseUp, false);
     document.addEventListener('mouseleave', onMouseUp, false);
+
+    // Add touch event listeners for mobile
+    document.addEventListener('touchstart', onTouchStart, false);
+    document.addEventListener('touchmove', onTouchMove, { passive: false });
+    document.addEventListener('touchend', onTouchEnd, false);
 }
 
 function createStarLayer(count, radius, sizeFactor) {
@@ -395,6 +400,46 @@ function handleNavigation() {
             });
         });
     });
+}
+
+// Touch event handlers
+let touchStartY = 0;
+let touchStartX = 0;
+let lastTouchY = 0;
+let lastTouchX = 0;
+let isTouching = false;
+
+function onTouchStart(event) {
+    event.preventDefault();
+    isTouching = true;
+    touchStartY = event.touches[0].pageY;
+    touchStartX = event.touches[0].pageX;
+    lastTouchY = touchStartY;
+    lastTouchX = touchStartX;
+}
+
+function onTouchMove(event) {
+    if (!isTouching) return;
+    event.preventDefault();
+    
+    const touchY = event.touches[0].pageY;
+    const touchX = event.touches[0].pageX;
+    
+    const deltaY = touchY - lastTouchY;
+    const deltaX = touchX - lastTouchX;
+    
+    // Update camera position based on touch movement
+    mouseX = deltaX * 0.01;
+    mouseY = deltaY * 0.01;
+    
+    lastTouchY = touchY;
+    lastTouchX = touchX;
+}
+
+function onTouchEnd(event) {
+    isTouching = false;
+    mouseX = 0;
+    mouseY = 0;
 }
 
 // Initialize everything

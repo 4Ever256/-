@@ -6,9 +6,12 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    overflow: hidden;
     color: white;
     background: #000;
+    overflow: hidden;
+    height: 100vh;
+    position: fixed;
+    width: 100%;
 }
 
 #space-container {
@@ -27,6 +30,9 @@ body {
     transform: translateX(-50%);
     z-index: 100;
     display: flex;
+    justify-content: center;
+    width: 90%;
+    max-width: 500px;
     gap: 20px;
     padding: 15px 30px;
     background: rgba(0, 0, 0, 0.5);
@@ -43,6 +49,8 @@ body {
     border-radius: 25px;
     transition: all 0.3s ease;
     font-size: 16px;
+    text-align: center;
+    flex: 1;
 }
 
 .nav-item:hover {
@@ -54,25 +62,28 @@ body {
 }
 
 .content-container {
-    position: relative;
+    position: fixed;
     z-index: 1;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
-    user-select: none;
+    overflow: hidden;
 }
 
 .page {
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.5s ease;
     pointer-events: none;
+    padding: 120px 20px 40px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .page.active {
@@ -147,9 +158,12 @@ p {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
+    width: 100%;
     max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
+    margin: 20px auto;
+    padding: 20px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .product-card {
@@ -160,6 +174,10 @@ p {
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 }
 
 .product-card:hover {
@@ -178,6 +196,13 @@ p {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 2px 10px rgba(136, 136, 255, 0.3);
+}
+
+.product-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .product-content h3 {
@@ -236,12 +261,30 @@ p {
 }
 
 @media (max-width: 768px) {
+    body {
+        overflow-y: auto;
+    }
+
+    .content-container {
+        overflow-y: auto;
+    }
+
+    .page {
+        padding-top: 100px;
+        height: 100vh;
+        overflow-y: auto;
+    }
+
+    .products-grid {
+        max-height: calc(100vh - 180px);
+        padding: 15px;
+    }
+
     .navigation {
-        padding: 10px 15px;
-        gap: 10px;
+        position: fixed;
+        top: 20px;
         width: 90%;
-        flex-wrap: wrap;
-        justify-content: center;
+        z-index: 1000;
     }
 
     .nav-item {
@@ -271,14 +314,17 @@ p {
 
     .product-card {
         padding: 20px;
+        margin-bottom: 15px;
     }
 
     .product-content h3 {
         font-size: 1.5rem;
+        margin-bottom: 10px;
     }
 
     .product-description {
         font-size: 1rem;
+        margin-bottom: 15px;
     }
 
     .content-grid {
@@ -300,8 +346,13 @@ p {
     }
 
     .social-icons {
+        position: fixed;
         bottom: 10px;
-        gap: 15px;
+        width: 100%;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+        padding: 10px 0;
     }
 
     .social-icon {
@@ -313,15 +364,18 @@ p {
     .navigation {
         padding: 8px 12px;
         gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .nav-item {
-        padding: 5px 12px;
-        font-size: 13px;
+        padding: 5px 10px;
+        font-size: 12px;
     }
 
     h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
     }
 
     .product-card {
@@ -329,13 +383,30 @@ p {
     }
 
     .product-icon i {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
-    .product-button {
-        width: 120px;
-        height: 40px;
-        font-size: 1rem;
+    .product-content h3 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+    .page {
+        padding-top: 70px;
+    }
+
+    .navigation {
+        top: 10px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
 }
 
