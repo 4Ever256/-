@@ -442,6 +442,47 @@ function onTouchEnd(event) {
     mouseY = 0;
 }
 
+// Mobile detection and warning
+function isMobileDevice() {
+    return (window.innerWidth <= 768) || 
+           /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+function showMobileWarning() {
+    const warningOverlay = document.createElement('div');
+    warningOverlay.className = 'mobile-warning-overlay';
+    warningOverlay.innerHTML = `
+        <div class="mobile-warning-content">
+            <h2>请使用电脑访问</h2>
+            <p>为了获得最佳体验，请使用电脑浏览本网站。</p>
+            <p>Please visit this website on a desktop computer for the best experience.</p>
+        </div>
+    `;
+    document.body.appendChild(warningOverlay);
+    document.body.style.overflow = 'hidden';
+}
+
+// Check device on load and resize
+window.addEventListener('load', function() {
+    if (isMobileDevice()) {
+        showMobileWarning();
+    }
+});
+
+window.addEventListener('resize', function() {
+    if (isMobileDevice()) {
+        if (!document.querySelector('.mobile-warning-overlay')) {
+            showMobileWarning();
+        }
+    } else {
+        const warningOverlay = document.querySelector('.mobile-warning-overlay');
+        if (warningOverlay) {
+            warningOverlay.remove();
+            document.body.style.overflow = '';
+        }
+    }
+});
+
 // Initialize everything
 init();
 animate();
